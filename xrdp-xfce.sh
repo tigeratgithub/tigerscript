@@ -15,15 +15,15 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 # 1. 更新系统
-apt-get update -qq
-DEBIAN_FRONTEND=noninteractive apt-get upgrade -yq
+apt update -qq
+DEBIAN_FRONTEND=noninteractive apt upgrade -yq
 
 # 2. 安装 Xfce4 轻量桌面
-DEBIAN_FRONTEND=noninteractive apt-get install -y \
+DEBIAN_FRONTEND=noninteractive apt install -y \
   xfce4 xfce4-goodies xfce4-session dbus-x11
 
 # 3. 安装 xrdp
-DEBIAN_FRONTEND=noninteractive apt-get install -y xrdp
+DEBIAN_FRONTEND=noninteractive apt install -y xrdp
 adduser xrdp ssl-cert        # 授权证书组，避免黑屏 [2][8]
 
 # 4. 指定会话环境为 Xfce
