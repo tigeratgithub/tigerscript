@@ -11,6 +11,7 @@ USR=$1                       # 当前登录用户（非 root 也可）
 echo "RDP_PORT=$RDP_PORT"
 echo "USR=$USR"
 echo "########################################################"
+exit 1
 
 # 0. 必须是 root
 if [[ $EUID -ne 0 ]]; then
