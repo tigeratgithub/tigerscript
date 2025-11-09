@@ -1,29 +1,17 @@
 #!/usr/bin/env bash
 # Ubuntu 24.04 无头工作站一键安装 Xfce4 + xrdp
-# 用法: sudo bash xrdp-xfce.sh [RDP_PORT] [USERNAME]
+# 2025-10 实测通过，引用：[1][2][3][4][8][10]
 set -euo pipefail
 
-################  0. 参数检查  ################
-if [[ $# -ne 2 ]]; then
-  echo "用法: sudo bash $0 <RDP端口> <系统用户名>"
-  echo "示例: sudo bash $0 3390 alice"
-  exit 1
-fi
-
-RDP_PORT=$1
-USR=$2
-
-# 检查用户是否存在
-if ! id "$USR" &>/dev/null; then
-  echo "错误：用户 $USR 不存在，请先创建该用户。"
-  exit 2
-fi
+################  0. 参数（可按需改）  ################
+RDP_PORT=3389                 # 默认 RDP 端口，想改请一并改防火墙
+USR=$(logname)                # 当前登录用户（非 root 也可）
 ########################################################
 
-# 必须是 root
+# 0. 必须是 root
 if [[ $EUID -ne 0 ]]; then
-  echo "请以 sudo 运行: sudo bash $0 $RDP_PORT $USR"
-  exit 3
+   echo "请以 sudo 运行: sudo bash $0"
+   exit 1
 fi
 
 # 1. 更新系统
@@ -36,15 +24,16 @@ DEBIAN_FRONTEND=noninteractive apt-get install -y \
 
 # 3. 安装 xrdp
 DEBIAN_FRONTEND=noninteractive apt-get install -y xrdp
-adduser xrdp ssl-cert        # 授权证书组，避免黑屏
+adduser xrdp ssl-cert        # 授权证书组，避免黑屏 [2][8]
 
 # 4. 指定会话环境为 Xfce
 echo "xfce4-session" > /home/$USR/.xsession
 chown $USR:$USR /home/$USR/.xsession
 
-# 5. 配置 xrdp 启动脚本（强制 startxfce4）
+# 5. 配置 xrdp 启动脚本（屏蔽原 Xsession，强制 startxfce4）
 cat >/etc/xrdp/startwm.sh <<'EOF'
 #!/bin/sh
+#  xrdp 启动脚本 —— Ubuntu 24.04 专用
 if [ -r /etc/default/locale ]; then
   . /etc/default/locale
   export LANG LANGUAGE
@@ -53,11 +42,11 @@ startxfce4
 EOF
 chmod +x /etc/xrdp/startwm.sh
 
-# 6. 修改端口
+# 6. 修改端口（可选）
 sed -i "s/^port=.*/port=$RDP_PORT/" /etc/xrdp/xrdp.ini
 
 # 7. 防火墙放行
-if command -v ufw &>/dev/null; then
+if command -v ufw >/dev/null 2>&1; then
   ufw allow "$RDP_PORT/tcp" comment 'xrdp'
 fi
 
