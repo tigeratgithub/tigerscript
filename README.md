@@ -9,5 +9,10 @@ sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/tigeratgithub/tiger
 ```shell
 sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/tigeratgithub/tigerscript/main/simple_bbr.sh)"
 ```
+xrdp-xfce.sh
 
+xfce4 + xrdp 
+```shell
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/tigeratgithub/tigerscript/main/xrdp-xfce.sh)"
+```
 
