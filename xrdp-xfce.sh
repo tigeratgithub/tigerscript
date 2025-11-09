@@ -65,3 +65,8 @@ echo "Xfce4 + xrdp 安装完成！"
 echo "RDP 端口：$RDP_PORT"
 echo "登录用户：$USR （使用系统账号密码）"
 echo "=================================================="
+
+# 10 安装chrome浏览器
+echo "安装chrome浏览器"
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+apt install ./google-chrome-stable_current_amd64.deb
