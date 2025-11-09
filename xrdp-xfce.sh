@@ -69,4 +69,8 @@ echo "=================================================="
 # 10 安装chrome浏览器
 echo "安装chrome浏览器"
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-apt install ./google-chrome-stable_current_amd64.deb
+apt install ./google-chrome-stable_current_amd64.deb -y
+
+# 11 安装中文输入法
+echo "安装中文输入法"
+apt install -y ibus-sunpinyin

@@ -15,10 +15,13 @@ EOF
 sysctl -p /etc/sysctl.d/99-bbr.conf >/dev/null
 
 # 3. 验证
+echo "sysctl -n net.ipv4.tcp_congestion_control"
 cc=$(sysctl -n net.ipv4.tcp_congestion_control)
 if [[ "$cc" == "bbr" ]]; then
+  echo "sysctl -n net.ipv4.tcp_congestion_control=$cc"
   echo "BBR 已启用并设置为默认拥塞控制算法。"
 else
   echo "失败！当前算法：$cc" >&2
   exit 2
 fi
+
