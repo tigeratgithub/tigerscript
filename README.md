@@ -15,4 +15,7 @@ xfce4 + xrdp
 ```shell
 sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/tigeratgithub/tigerscript/main/xrdp-xfce.sh)"
 ```
-
+install  docker
+```shell
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/tigeratgithub/tigerscript/main/docker_install.sh.sh)"
+```
