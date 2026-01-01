@@ -24,10 +24,23 @@ sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/tigeratgithub/tiger
 ```shell
 # 全量参数
 sudo ./renew-mqtt-cert.sh dns=dev.mqtt.com dir=/opt/mosquitto/config/certs cname=mosquitto
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/tigeratgithub/tigerscript/main/renew-mqtt-cert.sh)" -- dns=dev.mqtt.com dir=/opt/mosquitto/config/certs cname=mosquitto
 
 # 只传域名（其他使用脚本内的默认值）
 sudo ./renew-mqtt-cert.sh dns=iot.myserver.com
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/tigeratgithub/tigerscript/main/renew-mqtt-cert.sh)" -- dns=iot.myserver.com
 
 # 改变顺序
 sudo ./renew-mqtt-cert.sh cname=my_broker dns=mqtt.xyz.com
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/tigeratgithub/tigerscript/main/renew-mqtt-cert.sh)" -- cname=my_broker dns=mqtt.xyz.com
+
 ```
+
+### restart gnome-remote-desktop.service
+
+```shell
+sudo systemctl restart gnome-remote-desktop.service
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/tigeratgithub/tigerscript/main/restart_gnome_remote_desktop.sh)"
+```
+
+
