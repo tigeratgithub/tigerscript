@@ -2,7 +2,7 @@
 
 # --- 默认值设置 ---
 DNS="kline.tomcatio.top"  # 你的域名
-DIR="/home/tiger/mywork/money/mosquitto" # 证书存放目录
+DIR="/home/tiger/mywork/money/mosquitto/certs" # 证书存放目录
 PROJECT_PATH="/home/tiger/mywork/money" # 你的 docker-compose.yml 所在的目录
 SERVICE_NAME="mosquitto"      # compose 文件里的服务名
 
