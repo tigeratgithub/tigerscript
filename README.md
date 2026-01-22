@@ -39,7 +39,8 @@ sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/tigeratgithub/tiger
 ### restart gnome-remote-desktop.service
 
 ```shell
-sudo systemctl restart gnome-remote-desktop.service
+# sudo systemctl restart gnome-remote-desktop.service
+systemctl --user restart gnome-remote-desktop.service
 sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/tigeratgithub/tigerscript/main/restart_gnome_remote_desktop.sh)"
 ```
 
