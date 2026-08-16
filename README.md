@@ -1,4 +1,7 @@
+
+
 # tigerscript
+
 some script for setup env
 
 ### 设置拥塞控制算法为bbr
@@ -39,8 +42,20 @@ sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/tigeratgithub/tiger
 ### restart gnome-remote-desktop.service
 
 ```shell
-sudo systemctl restart gnome-remote-desktop.service
+# sudo systemctl restart gnome-remote-desktop.service
+systemctl --user restart gnome-remote-desktop.service
 sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/tigeratgithub/tigerscript/main/restart_gnome_remote_desktop.sh)"
 ```
+
+
+
+### 服务器盘点脚本
+
+```shell
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/tigeratgithub/tigerscript/main/check_server.sh)"
+chmod +x check_server.sh
+sudo ./checck_server.sh
+```
+
 
 
