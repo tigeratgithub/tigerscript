@@ -23,16 +23,16 @@ sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/tigeratgithub/tiger
 ### mqtt证书更新脚本
 ```shell
 # 全量参数
-sudo ./renew-mqtt-cert.sh dns=dev.mqtt.com dir=/opt/mosquitto/config/certs cname=mosquitto
-sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/tigeratgithub/tigerscript/main/renew-mqtt-cert.sh)" -- dns=dev.mqtt.com dir=/opt/mosquitto/config/certs cname=mosquitto
+sudo ./renew-mqtt-cert.sh dns=dev.mqtt.com key_dir=/opt/mosquitto/config/certs service=mosquitto
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/tigeratgithub/tigerscript/main/renew-mqtt-cert.sh)" -- dns=dev.mqtt.com key_dir=/opt/mosquitto/config/certs service=mosquitto
 
 # 只传域名（其他使用脚本内的默认值）
-sudo ./renew-mqtt-cert.sh dns=iot.myserver.com
-sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/tigeratgithub/tigerscript/main/renew-mqtt-cert.sh)" -- dns=iot.myserver.com
+sudo ./renew-mqtt-cert.sh dns=kline.tomcatio.top
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/tigeratgithub/tigerscript/main/renew-mqtt-cert.sh)" -- dns=kline.tomcatio.top
 
 # 改变顺序
-sudo ./renew-mqtt-cert.sh cname=my_broker dns=mqtt.xyz.com
-sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/tigeratgithub/tigerscript/main/renew-mqtt-cert.sh)" -- cname=my_broker dns=mqtt.xyz.com
+sudo ./renew-mqtt-cert.sh service=my_broker dns=mqtt.xyz.com
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/tigeratgithub/tigerscript/main/renew-mqtt-cert.sh)" -- service=my_broker dns=mqtt.xyz.com
 
 ```
 
